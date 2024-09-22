@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="ROBOTS" content="INDEX, FOLLOW" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Formation React js, avec ES6" />
+    <meta
+      name="keywords"
+      content="formation react, formation reactjs, freelance, flux, redux, es6, props, state, jsx"
+    />
+    <link rel="canonical" href="https://formation-reactjs.fr" />
+    <title>Formation reactjs x typescript</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link rel="stylesheet" href="reveal-js/dist/reset.css" />
+    <link rel="stylesheet" href="reveal-js/dist/reveal.css" />
+    <link rel="stylesheet" href="reveal-js/dist/theme/sky.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal-js/plugin/highlight/monokai.css" id="highlight-theme" />
+
+    <style type="text/css">
+      p {
+        text-align: left;
+      }
+
+      .reveal h3,
+      .reveal h4 {
+        text-transform: none;
+      }
+
+      .reveal pre code {
+        max-height: 530px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>
+           ReactJS x NextJS
+          </h2>
+          <h3>#Typescript</h3>
+        </section>
+        <section>
+          <h3>Versions</h3>
+          <pre>
+              <code data-trim>
+                  "react": "18.2.x"
+                  "nextJS": "14.2.x"
+                  "typescript": "5.6.x"
+          </code>
+          </pre>
+        </section>
+        <section>
+          <h3>Le programme !</h3>
+          <ul>
+            <li>
+              Typescript avancé
+              <ul>
+                <li>Typescript</li>
+                <li>Programmation fonctionnelle</li>
+              </ul>
+            </li>
+            <li>
+              ReactJS x NextJS
+              <ul>
+                <li>Principes de base</li>
+                <li>Composants</li>
+                <li>Tests</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2>Typescript</h2>
+        </section>
+        <section>
+          <h3>let, const</h3>
+          <pre><code data-trim>
+                let foo = 'bar'
+                const MAX = 10
+                const ttc = addTva(100, 20)
+                </code></pre>
+          <p class="fragment">
+            <span style="color: #8cd0d3">let</span> vs. <span style="color: #cc9393">const</span> ?
+            <span class="fragment">0-5 let / application</span>
+          </p>
+        </section>
+        <section>
+          <h3>let, const</h3>
+          <pre><code data-trim>
+                const user = {}
+                user.name = 'john' // (1)
+                user = {name: 'lea'} // (2)
+                </code></pre>
+          <pre class="fragment fade-up"><code data-trim>
+                const arr = ['a']
+                arr.push('b') // (3)
+                arr = ['a', 'b'] // (4)
+                </code></pre>
+        </section>
+        <section>
+          <h3>Arrow functions</h3>
+          <pre><code data-trim>
+                function addOldSchool(a: number, b: number): number {
+                    return a + b
+                }
+            </code></pre>
+          <pre class="fragment"><code data-trim>
+                const add = (a:number, b: number): number => {
+                    return a + b
+                }
+                </code></pre>
+          <pre class="fragment"><code data-trim>
+                const add = (a:number, b: number): number => a + b
+                </code></pre>
+        </section>
+        <section>
+          <h3>Arrow functions</h3>
+          <pre><code data-trim>
+                const squares = [0, 1, 2, 3, 4].map(x => x * x)
+                console.log(squares)
+                </code></pre>
+        </section>
+        <section>
+          <h3>Spread operator</h3>
+          <pre><code data-trim>
+              const user = {
+                  firstname: 'john',
+                  nickname: 'ninja',
+                  lastname: 'doe',
+                  age: 21
+              }
+
+              const updatedUser = {...user, firstname: 'toto'}
+              console.log(updatedUser) // ?
+            </code></pre>
+        </section>
+        <section data-auto-animate data-visibility="hidden">
+          <h3 data-id="code-title">Spread operator</h3>
+          <pre data-id="code-animation"><code class="hljs" data-trim>
+                const odd = [1, 3, 5, 7, 9]
+                const even = [2, 4, 6, 8]
+                const all = [0]
+
+                // arr.push([element1[, ...[, elementN]]])
+                all.push(odd)
+                all.push(even)
+
+                console.log(all) // ?
+                </code></pre>
+        </section>
+        <section data-auto-animate data-visibility="hidden">
+          <h3 data-id="code-title">Spread operator</h3>
+          <pre data-id="code-animation"><code class="hljs" data-trim>
+                const odd = [1, 3, 5, 7, 9]
+                const even = [2, 4, 6, 8]
+                const all = [0]
+
+                // arr.push([element1[, ...[, elementN]]])
+                for (let i = 0; i < odd.length; i++) {
+                    all.push(odd[i])
+                }
+                for (let i = 0; i < even.length; i++) {
+                    all.push(even[i])
+                }
+                console.log(all) // ?
+                </code></pre>
+        </section>
+        <section data-auto-animate>
+          <h3 data-id="code-title">Spread operator</h3>
+          <pre data-id="code-animation">
+                <code class="hljs" data-trim>
+                const odd: ReadonlyArray&lt;number&gt; = [1, 3, 5, 7, 9]
+                const even: ReadonlyArray&lt;number&gt; = [2, 4, 6, 8]
+                const all: ReadonlyArray&lt;number&gt; = [0, ...odd, ...even]
+                </code>
+            </pre>
+        </section>
+        <section data-visibility="hidden">
+          <h3>Immutabilité !</h3>
+          <p>Ne mutez pas pendant la formation, s'il vous plaît.</p>
+        </section>
+        <section data-auto-animate data-visibility="hidden">
+          <h3>Éviter les mutations</h3>
+          <pre data-id="immutability">
+                <code class="hljs" data-trim>
+                const defaultValues = [{money: 100}, {level: 0}]
+                const defaultLevel = defaultValues[1]
+
+                const newPlayer = {name: 'player1', data: defaultLevel}
+                newPlayer.data.level = 2
+
+                const newPlayer2 = {name: 'player2', data: defaultLevel}
+                console.log(newPlayer2) // ?
+          </code></pre>
+        </section>
+        <section data-auto-animate data-visibility="hidden">
+          <h3>Éviter les mutations</h3>
+          <pre data-id="immutability">
+                <code class="hljs" data-trim>
+               const defaultValues = [{money: 100}, {level: 0}]
+               const defaultLevel = defaultValues[1]
+
+               const newPlayer = {name: 'player1', data: defaultLevel}
+               const newPlayerUpdated = {...newPlayer, data: {level : 2}}
+          </code></pre>
+        </section>
+        <section>
+          <h3>Destructuring</h3>
+          <pre><code data-trim>
+                const foo = {a: 1, b: 2, c: 'bar'}
+                const {a} = foo
+                console.log(a) // ?
+          </code></pre>
+        </section>
+        <section>
+          <h3>Destructuring</h3>
+          <pre><code data-trim>
+            const user: User = {
+                firstname: 'john',
+                nickname: 'ninja',
+                lastname: 'doe',
+                age: 21
+            }
+
+            function getUserName(user: User) {
+                return `${user.firstname} ${user.lastname}`
+            }
+            console.log(getUserName(user))
+            </code></pre>
+          <pre class="fragment"><code data-trim>
+            function getUserName({firstname, lastname}: User) {
+                return `${firstname} ${lastname}`
+            }
+            </code></pre>
+          <pre class="fragment"><code data-trim>
+            const getUserName = ({firstname, lastname}: User) =>
+                `${firstname} ${lastname}`
+            </code></pre>
+        </section>
+        <section>
+          <h3>Destructuring - nested</h3>
+          <pre><code data-trim>
+            const user: User = {
+                firstname: 'john',
+                lastname: 'doe',
+                address: {
+                    street: 'avenue des champs élysées',
+                    num: '12'
+                }
+            }
+
+            function getUserAddress(user: User) {
+             return `${user.address.num} ${user.address.street}`
+            }
+            </code></pre>
+          <pre class="fragment"><code data-trim>
+            const getUserAddress = ({address: {num, street}}: User) =>
+                `${num} ${street}`
+            </code></pre>
+        </section>
+        <section>
+          <h3>Destructuring - alias</h3>
+          <pre><code data-trim>
+            const user: User = {
+                firstname: 'john',
+                lastname: 'doe',
+                address: {
+                    street: 'avenue des champs élysées',
+                    num: '12'
+                }
+            }
+
+            const getUserAddress = ({address: {num: foo, street: bar}}: User) =>
+                `${foo} ${bar}`
+            </code></pre>
+        </section>
+        <section>
+          <h3>Destructuring - arrays</h3>
+          <pre><code data-trim>
+            const maths = [x => x + 1, x => x * x, x => x * x * x]
+            const [plus1, square] = maths
+            plus1(41) // 42
+            square(12) // 144
+            </code></pre>
+        </section>
+        <section>
+          <h3>Shorthand Notation</h3>
+          <pre><code data-trim>
+                const foo = 42
+                const bar = 1
+
+                const longer = {
+                    foo: foo,
+                    bar: bar
+                }
+            </code></pre>
+          <pre class="fragment"><code data-trim>
+                const shorter = {
+                    foo,
+                    bar
+                }
+            </code></pre>
+        </section>
+        <section>
+          <h3>Promesses VS. async - await</h3>
+          <pre><code data-trim>
+            axios.get('/users/42/items')
+                .then(resp => resp.data)
+                .then(items => items.map(item => item.id))
+                .then(ids => {/* use the ids */})
+                .catch(error => console.log(error.toString()))
+            </code></pre>
+          <pre class="fragment"><code data-trim>
+            const fetchItems = async () => {
+                try {
+                    const response = await axios.get('/users/42/items')
+                    const items = response.data
+                    const itemIds = items.map(item => item.id))
+                    /* use the ids */
+                } catch(error){
+                    console.log(error.toString())
+                }
+            }
+            </code></pre>
+        </section>
+        <section>
+          <h3>Promesses VS. async - await</h3>
+          <pre><code data-trim>
+            axios.get('/users/42/items')
+                .then(({data : items}) => items.map(item => item.id))
+                .then(ids => {/* use the ids */})
+                .catch(error => console.log(error.toString()))
+            </code></pre>
+          <pre><code data-trim>
+            const fetchItems = async () => {
+              try {
+                const {data: items} = await axios.get('/users/42/items')
+                const itemIds = items.map(item => item.id))
+                /* use the ids */
+              } catch(error){
+                console.log(error.toString())
+              }
+            }
+            </code></pre>
+        </section>
+        <section>
+          <h3>Rappels - currying</h3>
+          <pre><code data-trim>
+            const add = function(x) {
+                return function(y) {
+                    return x + y
+                }
+            }
+            add(2)(3) // ???
+          </code></pre>
+          <pre class="fragment"><code data-trim>
+                const add2 = add(2)
+                add2(3) // = ?
+            </code></pre>
+          <pre class="fragment"><code data-trim>
+                const add = x => y => x + y // WTF ?!
+            </code></pre>
+          <pre class="fragment"><code data-trim>
+                const add = x =>
+                    y => (x + y)
+                // easy !
+            </code></pre>
+        </section>
+        <section>
+          <h3>Rappels - this</h3>
+          <pre><code data-trim data-noescape>
+            function f() {
+                this.foo // what is this ?
+            }
+            </code></pre>
+        </section>
+        <section>
+          <h1>
+            <img
+              width="200"
+              height="200"
+              data-src="images/react.svg"
+              alt="react"
+              style="border: none; background: none; box-shadow: none; margin: 0"
+            />
+          </h1>
+        </section>
+        <section>
+          <h3>Tout est composant</h3>
+          <span>TODO : trouver un screen shot</span>
+        </section>
+        <section>
+          <h3>Hello world</h3>
+          <pre>src/app/Hello/page.tsx<code data-trim>
+            interface Props {
+                name: string
+            }
+            const Hello = (props: Props) => <div>Hello {props.name} !</div>
+
+            export default Hello
+            </code></pre>
+
+        </section>
+        <section>
+          <h3>JSX</h3>
+          <pre><code data-trim>
+            (props: Props) => (
+                 &lt;li className="contact"&gt;
+                    &lt;h2 className="contact-name"&gt;{props.name}&lt;/h2&gt;
+                 &lt;/li&gt;
+            )
+            </code></pre>
+          <pre><code data-trim>
+            (props: Props) => React.createElement('li', {className: 'contact'},
+                    React.createElement('h2',
+                        {className: 'contact-name'}, props.name)
+                    )
+            )
+          </code></pre>
+        </section>
+        <section data-background="#DEE6F7">
+          <h3>TP-01</h3>
+          <h4>Hello World</h4>
+          <ol>
+            <li>Installer l'environnement</li>
+            <li>Ecrire le composant Hello</li>
+          </ol>
+        </section>
+        
+
+    <script src="reveal-js/dist/reveal.js"></script>
+    <script src="reveal-js/plugin/zoom/zoom.js"></script>
+    <script src="reveal-js/plugin/notes/notes.js"></script>
+    <script src="reveal-js/plugin/search/search.js"></script>
+    <script src="reveal-js/plugin/markdown/markdown.js"></script>
+    <script src="reveal-js/plugin/highlight/highlight.js"></script>
+    <script>
+      const showHiddenSlides = !window.location.search.match(/print-pdf/gi)
+      console.log('showHiddenSlides', showHiddenSlides)
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+        showHiddenSlides,
+        pdfSeparateFragments: false,
+        plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight],
+      })
+    </script>
+  </body>
+</html>
